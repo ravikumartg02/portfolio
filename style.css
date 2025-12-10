@@ -5,6 +5,12 @@
   --max-width: 980px;
 }
 
+/* Smooth animation base styles */
+*{
+  box-sizing:border-box;
+  transition: all 0.3s ease;
+}
+
 body{
   margin:0;
   font-family: Arial, sans-serif;
@@ -14,6 +20,15 @@ body{
   flex-direction:column;
   align-items:center;
   padding:20px;
+
+  /* Fade-in animation */
+  opacity:0;
+  animation: fadeIn 0.8s forwards ease-in-out;
+}
+
+@keyframes fadeIn{
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
 }
 
 .hero{
@@ -23,6 +38,15 @@ body{
   padding:20px;
   border-radius:12px;
   color:white;
+  backdrop-filter: blur(6px);
+
+  /* Slide animation */
+  animation: slideDown 1s ease;
+}
+
+@keyframes slideDown{
+  from {opacity:0; transform: translateY(-20px);}
+  to {opacity:1; transform: translateY(0);}
 }
 
 .hero-inner{
@@ -31,11 +55,19 @@ body{
   align-items:center;
 }
 
+/* Avatar Animation */
 .avatar{
   width:140px;
   height:140px;
   border-radius:12px;
   overflow:hidden;
+  transform: scale(0.9);
+  animation: popIn 0.7s ease-out forwards;
+}
+
+@keyframes popIn{
+  0% {transform: scale(0.3); opacity:0;}
+  100% {transform: scale(1); opacity:1;}
 }
 
 .avatar img{
@@ -47,6 +79,14 @@ body{
 .intro h1{
   font-size:28px;
   margin:0;
+
+  /* Text animation */
+  animation: fadeText 1.5s ease-out;
+}
+
+@keyframes fadeText {
+  from {opacity:0; letter-spacing: 6px;}
+  to {opacity:1; letter-spacing:1px;}
 }
 
 .role{
@@ -69,10 +109,23 @@ body{
   margin-top:20px;
 }
 
+/* Card animation */
 .card{
   background:var(--card-bg);
   padding:20px;
   border-radius:12px;
+  transform: translateY(20px);
+  opacity:0;
+  animation: cardLoad 1s forwards;
+}
+
+.card:hover{
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+@keyframes cardLoad {
+  to {opacity:1; transform: translateY(0);}
 }
 
 .grid{
@@ -95,6 +148,11 @@ body{
   border-radius:8px;
   font-weight:bold;
   color:#4b0082;
+  box-shadow: 0 0 10px rgba(155,77,255,0.2);
+}
+
+.skills li:hover{
+  transform: scale(1.1);
 }
 
 .projects{
@@ -109,9 +167,18 @@ body{
   text-decoration:none;
   color:#3a0073;
   font-weight:bold;
+
+  /* Button glow */
+  box-shadow: 0 0 10px #d4b3ff;
+}
+
+.cta:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ffffff;
 }
 
 .footer{
   margin-top:20px;
   color:white;
 }
+
